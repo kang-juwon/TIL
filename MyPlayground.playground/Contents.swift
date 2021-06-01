@@ -4,7 +4,7 @@
     //The number of letters in alphabet equals 26
     
     
-    let password = alphabet[Int.random(in: 0 ... 25)] + alphabet[Int.random(in: 0 ... 25)] + alphabet[Int.random(in: 0 ... 25)] + alphabet[Int.random(in: 0 ... 25)] + alphabet[Int.random(in: 0 ... 25)] + alphabet[Int.random(in: 0 ... 25)]
+let password = alphabet[Int.random(in: 0 ... 25)] + alphabet[Int.random(in: 0 ... 25)] + alphabet[Int.random(in: 0 ... 25)] + alphabet[Int.random(in: 0 ... 25)] + alphabet[Int.random(in: 0 ... 25)] + alphabet[Int.random(in: 0 ... 25)]
 
-    print(password)
+print(password)
 
