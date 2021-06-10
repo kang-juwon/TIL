@@ -20,6 +20,13 @@ class ViewController: UIViewController {
     @IBAction func keyPressed(_ sender: UIButton) {
         // sender.currentTitle은 자료형이 String이 아닌 String? 이다. (optional string)
         playSound(soundName: sender.currentTitle!)
+        sender.alpha = 0.5
+        print("start")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            sender.alpha = 1.0
+            print("End")
+        }
     }
     
     func playSound(soundName: String) {
@@ -28,5 +35,6 @@ class ViewController: UIViewController {
         player.play()
                 
     }
+
 }
 
