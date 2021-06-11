@@ -8,8 +8,24 @@
 
 import UIKit
 
+
 class ViewController: UIViewController {
     
-
-
+    let eggTimes = [
+        "Soft" : 5,
+        "Medium" : 7,
+        "Hard" : 12
+    ]
+    
+    @IBAction func hardnessSelected(_ sender: UIButton) {
+        
+        if sender.currentTitle == "Soft" {
+            print(eggTimes[s])
+        } else if sender.currentTitle == "Medium" {
+            print(mediumTime)
+        } else if sender.currentTitle == "Hard" {
+            print(hardTime)
+        }
+    }
+    
 }
