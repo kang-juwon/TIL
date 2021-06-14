@@ -17,25 +17,31 @@ class ViewController: UIViewController {
         "Hard" : 720
     ]
     
-    var counter : Int?
+    var counter = 60
+    var timer = Timer()
+    
+    @IBOutlet weak var titleLabel: UILabel!
     
     @IBAction func hardnessSelected(_ sender: UIButton) {
+        
+        timer.invalidate()
         
         let hardness = sender.currentTitle!
         
         print(eggTimes[hardness]!)
         
-        counter = eggTimes[sender.currentTitle!]
-        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
-
-        }
+        counter = eggTimes[hardness]!
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
+        
+    }
     
     @objc func updateCounter() {
-        if counter! > 0 {
-            print("\(String(describing: counter)) seconds")
-            counter! -= 1
+        if counter > 0 {
+            print("\(counter) seconds")
+            counter -= 1
+        } else if counter == 0 {
+            titleLabel.text = "Done"
         }
     }
-
-
-    }
+    
+}
