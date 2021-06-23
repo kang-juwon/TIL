@@ -5,8 +5,13 @@ struct Town {
     var citizens : [String] // citizens, array
     var resources : [String : Int] // resources, dictionary
     
-    init(<#parameters#>) {
-        <#statements#>
+    // init의 parameter에는 struct의 property와 중복되지 않는 변수명을 사용한다.
+    // **만약 동일한 변수명을 사용하고 싶다면 property에 해당하는 변수를 사용할 때 앞에 self.를 붙여준다.
+    // **self는 생성될 최종 객체를 나타낸다.
+    init(name : String, citizens : [String], resources : [String : Int]) {
+        self.name = name
+        self.citizens = citizens
+        self.resources = resources
     }
     
     // Town's Behavior, 구조체와 관련된 함수 == method
@@ -15,17 +20,12 @@ struct Town {
     }
 }
 
-// Town의 사본을 만들어서 myTown 변수에 보관
-// myTown을 사용하고, myTown의 속성에 접근할 수 있게 된다
-var myTown = Town()
+var anotherTown = Town(name: "Nameless Island", citizens: ["Tom"], resources: ["Coconuts" : 100, "Crab" : 30])
 
-// .을 사용해서 myTown의 속성에 접근할 수 있다.
-print(myTown.citizens)
-print("\(myTown.name) has \(myTown.resources["Grain"]!) bags of grain.")
+var ghostTown = Town(name: "Ghost town", citizens: [], resources: ["Tumbleweed" : 1])
 
-// myTown에 새로운 항목 추가 -- append
-myTown.citizens.append("Gaga")
+anotherTown.citizens.append("Wilson")
+print(anotherTown.citizens)
+ghostTown.fortify()
 
-// 항목의 갯수 count -- count
-print(myTown.citizens.count)
 
