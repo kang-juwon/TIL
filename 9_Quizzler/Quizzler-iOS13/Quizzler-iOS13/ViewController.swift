@@ -48,9 +48,10 @@ class ViewController: UIViewController {
         
         
         if userAnswer == actualAnswer {
-            print("Right!")
+            // UIcolor == 미리 build되어 있는 color
+            sender.backgroundColor = UIColor.green
         } else {
-            print("Wrong!")
+            sender.backgroundColor = UIColor.red
         }
         if questionNumber < quiz.count - 1 {
             questionNumber += 1
@@ -62,6 +63,10 @@ class ViewController: UIViewController {
     
     func updateUI() {
         questionLabel.text = quiz[questionNumber].text
+        DispatchQueue.main.asyncAfter(deadline: .now()+2.0) {
+            self.trueButton.backgroundColor = UIColor.clear
+            self.falseButton.backgroundColor = UIColor.clear
+        }
     }
     
     
