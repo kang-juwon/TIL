@@ -67,6 +67,8 @@ class ViewController: UIViewController {
         questionLabel.text = quiz[questionNumber].text
         trueButton.backgroundColor = UIColor.clear
         falseButton.backgroundColor = UIColor.clear
+        //questionNumber가 0부터 시작하기 때문에, 첫 Q일 때도 progressBar가 진행되도록 하기 위해 questionNumber + 1 사용함
+        progressBar.progress = Float(questionNumber + 1) / Float(quiz.count)
     }
 }
 
