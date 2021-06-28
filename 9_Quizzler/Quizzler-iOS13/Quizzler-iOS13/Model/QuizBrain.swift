@@ -31,14 +31,30 @@ struct QuizBrain {
     //userAnswer는 internal parameter, 이 함수 안에서 사용할 수 있음
     //만약 external parameter name을 사용하지 않을거라면 '_'으로 대신하면 된다.
     //func checkAnswer(_ userAnswer: String)와 동일
-    func checkAnswer(answer userAnswer: String) {
+    func checkAnswer(answer userAnswer: String) -> Bool {
         if userAnswer == quiz[questionNumber].answer {
             //user got it right
-            
+            return true
         } else {
             //user got it wrong
-              
+            return false
         }
     }
-
+    
+    func getQuestionText() -> String {
+        return quiz[questionNumber].text
+    }
+    
+    func getProgress() -> Float {
+        return Float(questionNumber + 1) / Float(quiz.count)
+    }
+    
+    func nextQuestion() {
+        if questionNumber < quiz.count - 1 {
+            questionNumber += 1
+        } else {
+            questionNumber = 0
+        }
+    }
+    
 }
