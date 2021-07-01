@@ -12,8 +12,10 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var progressBar: UIProgressView!
-    @IBOutlet weak var trueButton: UIButton!
-    @IBOutlet weak var falseButton: UIButton!
+    
+    @IBOutlet weak var firstButton: UIButton!
+    @IBOutlet weak var secondButton: UIButton!
+    @IBOutlet weak var thirdButton: UIButton!
     @IBOutlet weak var scoreLabel: UILabel!
     
     var quizBrain = QuizBrain()
@@ -30,7 +32,7 @@ class ViewController: UIViewController {
         //QuizBrain.swift에서 external parameter name을 _로 입력한 경우
         //quizBrain.checkAnswer(userAnswer) 아래와 동일
 
-        let userGotItRight = quizBrain.checkAnswer(answer: userAnswer)
+        let userGotItRight = quizBrain.checkAnswer(correctAnswer: userAnswer)
         //QuizBrain.swift에서 external parameter name을 answer로 입력한 경우
         
         
@@ -49,9 +51,13 @@ class ViewController: UIViewController {
     
     @objc func updateUI() {
         questionLabel.text = quizBrain.getQuestionText()
+        firstButton.setTitle(quizBrain.getAnswerSheet(buttonNumber: 0), for: .normal)
+        secondButton.setTitle(quizBrain.getAnswerSheet(buttonNumber: 1), for: .normal)
+        thirdButton.setTitle(quizBrain.getAnswerSheet(buttonNumber: 2), for: .normal)
         progressBar.progress = quizBrain.getProgress()
-        trueButton.backgroundColor = UIColor.clear
-        falseButton.backgroundColor = UIColor.clear
+        firstButton.backgroundColor = UIColor.clear
+        secondButton.backgroundColor = UIColor.clear
+        thirdButton.backgroundColor = UIColor.clear
         //questionNumber가 0부터 시작하기 때문에, 첫 Q일 때도 progressBar가 진행되도록 하기 위해 questionNumber + 1 사용함
         scoreLabel.text = "Score : \(quizBrain.getScore())"
     }
