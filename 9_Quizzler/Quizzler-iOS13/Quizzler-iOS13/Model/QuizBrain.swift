@@ -26,14 +26,16 @@ struct QuizBrain {
     ]
     
     var questionNumber = 0
+    var quizScore = 0
     
     //아랫줄에서 answer은 external parameter, 함수 외부에서 사용할 수 있음
     //userAnswer는 internal parameter, 이 함수 안에서 사용할 수 있음
     //만약 external parameter name을 사용하지 않을거라면 '_'으로 대신하면 된다.
     //func checkAnswer(_ userAnswer: String)와 동일
-    func checkAnswer(answer userAnswer: String) -> Bool {
+    mutating func checkAnswer(answer userAnswer: String) -> Bool {
         if userAnswer == quiz[questionNumber].answer {
             //user got it right
+            quizScore += 1
             return true
         } else {
             //user got it wrong
@@ -49,12 +51,17 @@ struct QuizBrain {
         return Float(questionNumber + 1) / Float(quiz.count)
     }
     
-    func nextQuestion() {
+    mutating func nextQuestion() {
         if questionNumber < quiz.count - 1 {
             questionNumber += 1
         } else {
+            quizScore = 0
             questionNumber = 0
         }
+    }
+    
+    func getScore() -> Int {
+        return quizScore
     }
     
 }
