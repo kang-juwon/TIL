@@ -39,7 +39,12 @@ class ViewController: UIViewController {
         
         // let bmi = weight / (height * height)
         let bmi = weight / pow(height, 2)
-        print(bmi)
+        
+        let secondVC = SecondViewController()
+        secondVC.bmiValue = String(format: "%.1f", bmi)
+        
+        self.present(secondVC, animated: true, completion: nil)
+        // ==> secondVC를 화면에 띄울건데, 화면에 띄우는 게 끝나면 아무것도 하지 않기를 바란다
 
     }
     
